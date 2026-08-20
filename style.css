@@ -324,6 +324,102 @@ footer {
     cursor: pointer;
 }
 
+/* --- SEÇÃO MITOS E VERDADES (FLIP CARDS 3D) --- */
+.mitos-verdades {
+    padding: 80px 20px;
+    background-color: var(--white, #ffffff);
+}
+
+.cards-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Garante que caia para a linha de baixo no celular */
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 320px;
+    height: 260px;
+    perspective: 1000px; 
+    cursor: pointer;
+}
+
+/* A estrutura que gira */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d; /* Permite o efeito 3D */
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;         
+    border-radius: 20px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* Lado da Frente (Mito) */
+.flip-card-front {
+    background-color: #F8F6F2; 
+    border: 1px solid rgba(166, 188, 180, 0.3);
+}
+
+.flip-card-front h3 {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: var(--text-dark, #333);
+}
+
+/* Lado do Verso (Verdade) */
+.flip-card-back {
+    background-color: #5B7A6C; 
+    color: white;
+    transform: rotateY(180deg); 
+}
+
+.flip-card-back p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Etiquetas (Badge "Mito" e "Verdade") */
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+    background-color: rgba(91, 122, 108, 0.15);
+    color: #5B7A6C;
+}
+
+.badge-outline {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: white;
+}
+
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 900px) {
     .about-content {
