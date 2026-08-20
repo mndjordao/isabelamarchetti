@@ -88,3 +88,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+// --- 5. LÓGICA DAS BOLINHAS DO CARROSSEL ---
+const dots = document.querySelectorAll('.dot');
+const cards = document.querySelectorAll('.carousel-track .card');
+
+if (track && dots.length > 0) {
+    // Sincroniza a bolinha ativa com a rolagem (arrastar pelo touch)
+    track.addEventListener('scroll', () => {
+        // Pega a largura do card + os 30px de espaço (gap)
+        const cardWidth = cards[0].offsetWidth + 30; 
+        const scrollPosition = track.scrollLeft;
+        
+        // Descobre qual card está mais centralizado na tela
+        let activeIndex = Math.round(scrollPosition / cardWidth);
+        
+        // Remove a classe 'active' de todas as bolinhas e coloca apenas na atual
+        dots.forEach(dot => dot.classList.remove('active'));
+        if(dots[activeIndex]) {
+            dots[activeIndex].classList.add('active');
+        }
+    });
+
+    // Faz o carrossel rolar até o card correspondente ao clicar na bolinha
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            const cardWidth = cards[0].offsetWidth + 30;
+            track.scrollTo({
+                left: index * cardWidth,
+                behavior: 'smooth'
+            });
+        });
+    });
+}

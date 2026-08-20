@@ -214,6 +214,29 @@ h1, h2, h3 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+    .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+}
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--accent-light);
+    opacity: 0.5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    opacity: 1;
+    background-color: var(--accent-deep);
+    transform: scale(1.2);
+}
+
 .carousel-track .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(0,0,0,0.05); 
@@ -336,4 +359,14 @@ footer {
     
     .carousel-btn { display: none; }
     .relative-container { padding: 0; }
+}
+
+@media (max-width: 768px) {
+    .carousel-track .card {
+        /* Deixa o card com 85% da largura da tela, centralizado */
+        flex: 0 0 85vw !important; 
+        width: 85vw !important;
+        max-width: 350px !important;
+        padding: 30px 20px; 
+    }
 }
