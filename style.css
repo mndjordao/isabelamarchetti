@@ -307,7 +307,7 @@ h1, h2, h3 {
 /* --- FOOTER --- */
 footer {
     text-align: center;
-    padding: 50px 0;
+    padding: 20px 0;
     background: var(--white);
     color: var(--text-dark);
     font-size: 0.95rem;
@@ -707,3 +707,138 @@ footer {
     }
 }
 
+/* ========================================== */
+/* ESTILOS DA NUVEM DE PALAVRAS               */
+/* ========================================== */
+
+/* --- Tipografia do Cabeçalho da Nuvem de Palavras --- */
+.title-emocoes {
+    font-family: inherit;
+    color: #5B7A6C !important; /* Força o verde principal do site */
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.subtitle-emocoes {
+    font-family: inherit;
+    color: var(--text-dark, #444); /* Um cinza mais escuro para leitura */
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+.emocoes-section, 
+.emocoes-section h2, 
+.emocoes-section p, 
+.texto-acolhimento, 
+.cta-acolhimento p {
+    font-family: inherit; /* Força a fonte do site em todos os textos desta área */
+}
+.emocoes-section {
+    padding: 80px 20px;
+    background-color: #F8F6F2; /* Fundo off-white elegante */
+}
+
+.word-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Letras como texto interativo */
+.word-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: #A6BCB4; /* Verde bem clarinho e discreto */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+}
+
+.word-cloud .dot {
+    color: #ccc;
+    font-size: 1.5rem;
+}
+
+/* Efeito ao passar o mouse e ao clicar */
+.word-btn:hover {
+    color: #5B7A6C;
+    transform: scale(1.05);
+}
+
+.word-btn.active {
+    color: #5B7A6C;
+    font-weight: 700;
+    transform: scale(1.1);
+}
+
+/* A Caixa de Resposta da Isabela */
+.resposta-container {
+    margin-top: 50px;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    animation: fadeInDown 0.5s ease;
+    text-align: center;
+}
+
+.texto-acolhimento {
+    font-size: 1.15rem;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-style: italic; /* Dá um toque de "conversa pessoal" */
+}
+
+.cta-acolhimento {
+    border-top: 1px solid #eee;
+    padding-top: 25px;
+}
+
+.cta-acolhimento p {
+    font-size: 1rem;
+    color: #5B7A6C;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.btn-agendar-pequeno {
+    display: inline-block;
+    background-color: #5B7A6C;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.btn-agendar-pequeno:hover {
+    background-color: #4A6358;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* No celular, tira as bolinhas divisórias e deixa com formato de tags para facilitar o toque */
+@media (max-width: 768px) {
+    .word-cloud .dot { display: none; }
+    .word-cloud { gap: 10px; }
+    .word-btn { 
+        font-size: 1.1rem; 
+        border: 1px solid #DCE6E2; 
+        border-radius: 20px; 
+        padding: 8px 16px; 
+    }
+}

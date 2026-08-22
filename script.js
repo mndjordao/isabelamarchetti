@@ -141,7 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownInterval;
     let textTimeout; // Variável para controlar os 5 segundos do texto
     
-    let timeLeft = 120; // O exercício continua com 120 segundos (2 minutos)
+    let timeLeft = 90; // O exercício continua com 1
+    // 20 segundos (2 minutos)
     let isExerciseActive = false;
 
     function updateTimerDisplay(seconds) {
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isExerciseActive = false;
         if (animatedCircle) animatedCircle.classList.remove('inhale', 'exhale');
         if (circleText) circleText.innerText = "Começar";
-        updateTimerDisplay(120); // Volta o relógio visual para 02:00
+        updateTimerDisplay(90); // Volta o relógio visual para 01:30
     }
 
     // 1. Abrir e Fechar o Painel
@@ -201,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(isExerciseActive) return; 
             
             isExerciseActive = true;
-            timeLeft = 120;
+            timeLeft = 90;
             if (reflectionBox) reflectionBox.style.display = 'none'; 
             
             // Inicia o visual da bolinha
@@ -216,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 5000); // 5000 milissegundos = 5 segundos
             
-            // CRONÔMETRO PRINCIPAL: Conta os 120 segundos da bolinha
+            // CRONÔMETRO PRINCIPAL: Conta os 90 segundos da bolinha
             countdownInterval = setInterval(() => {
                 timeLeft--;
                 updateTimerDisplay(timeLeft);
@@ -227,6 +228,46 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Não precisamos mandar o texto aparecer aqui, pois ele já apareceu aos 5 segundos!
                 }
             }, 1000);
+        });
+    }
+
+
+    // ==========================================
+    // LÓGICA DA NUVEM DE PALAVRAS
+    // ==========================================
+    const wordBtns = document.querySelectorAll('.word-btn');
+    const respostaContainer = document.getElementById('resposta-emocao');
+    const textoAcolhimento = document.getElementById('texto-acolhimento');
+
+    // Textos temporários para mostrar a ideia para a cliente
+    const textosEmocoes = {
+        'ansiedade': '"A ansiedade muitas vezes faz a nossa mente correr muito mais rápido do que o nosso corpo aguenta. É normal sentir que você está perdendo o controle, mas existem ferramentas para ancorar você de volta ao presente e acalmar esse turbilhão."',
+        
+        'sobrecarga': '"Carregar o peso do mundo nas costas cansa. A sobrecarga nos faz sentir que nunca somos suficientes, mesmo quando estamos dando o nosso melhor. Você merece (e precisa) de um momento de pausa."',
+        
+        'tristeza': '"A tristeza é uma emoção natural, embora doa. Dar espaço para sentir isso, sem se julgar ou se forçar a ser forte o tempo todo, é o primeiro passo para compreender o que essa dor está tentando te dizer."',
+        
+        'relacionamentos': '"Nossas conexões com os outros podem ser nossa maior fonte de alegria, mas também de grandes desgastes. Entender seus próprios limites é essencial para construir relações mais saudáveis."',
+        
+        'esgotamento': '"O esgotamento mental e físico não é um sinal de fraqueza, mas um alerta de que você foi forte por muito tempo sem recarregar suas energias. Seu corpo e sua mente estão pedindo socorro."'
+    };
+
+    if (wordBtns.length > 0 && respostaContainer && textoAcolhimento) {
+        wordBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove o destaque de todas as palavras
+                wordBtns.forEach(b => b.classList.remove('active'));
+                
+                // Adiciona destaque na palavra clicada
+                btn.classList.add('active');
+                
+                // Descobre qual emoção foi clicada
+                const emocao = btn.getAttribute('data-emocao');
+                
+                // Troca o texto e exibe a caixa suavemente
+                textoAcolhimento.innerText = textosEmocoes[emocao];
+                respostaContainer.style.display = 'block';
+            });
         });
     }
 });

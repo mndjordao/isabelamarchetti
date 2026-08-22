@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
     <title>Isabela Navacinsk Marchetti - Psicóloga Clínica</title>
     <link rel="icon" type="image/png" href="image/fav.png">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -17,8 +18,8 @@
             <button class="menu-toggle" aria-label="Abrir menu">☰</button>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#sobre">Sobre Mim</a></li>
                     <li><a href="#servicos">Como Ajudo</a></li>
+                    <li><a href="#sobre">Sobre Mim</a></li>
                     <li><a href="#contato" class="btn-primary" onclick="window.open('https://wa.me/5511993641771?text=Olá,%20Isabela!%20Gostaria%20de%20agendar%20uma%20consulta.', '_blank')" >Agendar Consulta</a></li>
                 </ul>
             </nav>
@@ -143,6 +144,40 @@
         </section>
     </main>
 
+    <!-- ========================================== -->
+<!-- SEÇÃO: NUVEM DE PALAVRAS (COMO VOCÊ ESTÁ?) -->
+<!-- ========================================== -->
+<section class="emocoes-section">
+    <div class="container text-content" style="text-align: center;">
+        <h2 class="section-title title-emocoes">Como você está se sentindo hoje?</h2>
+        <p class="subtitle-emocoes">Selecione uma palavra que descreva seu momento atual:</p>
+        <!-- Nuvem de Palavras -->
+        <div class="word-cloud">
+            <button class="word-btn" data-emocao="ansiedade">Ansiedade</button>
+            <span class="dot">•</span>
+            <button class="word-btn" data-emocao="sobrecarga">Sobrecarga</button>
+            <span class="dot">•</span>
+            <button class="word-btn" data-emocao="tristeza">Tristeza</button>
+            <span class="dot">•</span>
+            <button class="word-btn" data-emocao="relacionamentos">Relacionamentos</button>
+            <span class="dot">•</span>
+            <button class="word-btn" data-emocao="esgotamento">Esgotamento</button>
+        </div>
+
+        <!-- Caixa de Resposta (Fica invisível até a pessoa clicar) -->
+        <div id="resposta-emocao" class="resposta-container" style="display: none;">
+            <p id="texto-acolhimento" class="texto-acolhimento"></p>
+            <div class="cta-acolhimento">
+                <p>Você não precisa lidar com isso sozinho(a). A terapia é um espaço seguro para organizar esses sentimentos.</p>
+                <a href="https://wa.me/5511993641771?text=Olá,%20Isabela!%20Gostaria%20de%20agendar%20uma%20conversa." target="_blank" rel="noopener noreferrer" class="btn-agendar-pequeno">
+                    Vamos conversar?
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
     <footer id="contato">
         <div class="container">
             <p>Copyright &copy; 2026</p>
@@ -193,7 +228,7 @@
                             <span id="circle-text">Começar</span>
                         </div>
                     </div>
-                    <div class="timer-display" id="timer-display">02:00</div>
+                    <div class="timer-display" id="timer-display">01:30</div>
                 </div>
 
                 <!-- Reflexão final (Fica oculta no início) -->
