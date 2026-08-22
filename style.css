@@ -314,6 +314,26 @@ footer {
     border-top: 3px solid var(--accent-light);
 }
 
+/* --- CRÉDITOS DO DESENVOLVEDOR NO RODAPÉ --- */
+.footer-credits {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light, #666); /* Cinza claro para não brigar com o conteúdo */
+    font-family: inherit;
+}
+
+.dev-link {
+    color: #5B7A6C; /* O seu verde de destaque */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.dev-link:hover {
+    color: #4A6358;
+    text-decoration: underline;
+}
+
 /* --- MENU MOBILE OCULTO --- */
 .menu-toggle {
     display: none;
